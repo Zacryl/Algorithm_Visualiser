@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\personal_Projects\\Algorithm_Visualiser\\AlgorithmVisualiser\\AlgorithmVisualiser\\AlgorithmVisualiser.csproj",
+      "projectUniqueName": "F:\\personal_Projects\\Algorithm_Visualiser\\Algorithm_Visualiser\\AlgorithmVisualiser\\AlgorithmVisualiser.csproj",
       "projectName": "AlgorithmVisualiser",
-      "projectPath": "F:\\personal_Projects\\Algorithm_Visualiser\\AlgorithmVisualiser\\AlgorithmVisualiser\\AlgorithmVisualiser.csproj",
+      "projectPath": "F:\\personal_Projects\\Algorithm_Visualiser\\Algorithm_Visualiser\\AlgorithmVisualiser\\AlgorithmVisualiser.csproj",
       "packagesPath": "C:\\Users\\alpha\\.nuget\\packages\\",
-      "outputPath": "F:\\personal_Projects\\Algorithm_Visualiser\\AlgorithmVisualiser\\AlgorithmVisualiser\\obj\\",
+      "outputPath": "F:\\personal_Projects\\Algorithm_Visualiser\\Algorithm_Visualiser\\AlgorithmVisualiser\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alpha\\AppData\\Roaming\\NuGet\\NuGet.Config",

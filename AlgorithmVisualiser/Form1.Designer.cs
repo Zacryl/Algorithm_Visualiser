@@ -30,10 +30,10 @@ namespace AlgorithmVisualiser
         private void InitializeComponent()
         {
             this.Algorithm = new System.Windows.Forms.Label();
-            this.SelectedAlgorithm = new System.Windows.Forms.ComboBox();
             this.Reset = new System.Windows.Forms.Button();
             this.VisualPanel = new System.Windows.Forms.Panel();
             this.Start = new System.Windows.Forms.Button();
+            this.SelectedAlgorithm = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Algorithm
@@ -44,17 +44,6 @@ namespace AlgorithmVisualiser
             this.Algorithm.Size = new System.Drawing.Size(61, 15);
             this.Algorithm.TabIndex = 0;
             this.Algorithm.Text = "Algorithm";
-            // 
-            // SelectedAlgorithm
-            // 
-            this.SelectedAlgorithm.FormattingEnabled = true;
-            this.SelectedAlgorithm.Items.AddRange(new object[] {
-            "InsertionSort",
-            "CountingSort"});
-            this.SelectedAlgorithm.Location = new System.Drawing.Point(81, 13);
-            this.SelectedAlgorithm.Name = "SelectedAlgorithm";
-            this.SelectedAlgorithm.Size = new System.Drawing.Size(121, 23);
-            this.SelectedAlgorithm.TabIndex = 1;
             // 
             // Reset
             // 
@@ -84,6 +73,22 @@ namespace AlgorithmVisualiser
             this.Start.UseVisualStyleBackColor = true;
             this.Start.Click += new System.EventHandler(this.Start_Click);
             // 
+            // SelectedAlgorithm
+            // 
+            this.SelectedAlgorithm.FormattingEnabled = true;
+            this.SelectedAlgorithm.Items.AddRange(new object[] {
+            "-Sort Algoritm-",
+            "Insertion Sort",
+            "Bubble Sort",
+            "Merge Sort",
+            "-Search Algorithms-",
+            "Find Max"});
+            this.SelectedAlgorithm.Location = new System.Drawing.Point(81, 13);
+            this.SelectedAlgorithm.Name = "SelectedAlgorithm";
+            this.SelectedAlgorithm.Size = new System.Drawing.Size(121, 23);
+            this.SelectedAlgorithm.TabIndex = 1;
+            this.SelectedAlgorithm.SelectedIndexChanged += new System.EventHandler(this.SelectedAlgorithm_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -95,7 +100,7 @@ namespace AlgorithmVisualiser
             this.Controls.Add(this.SelectedAlgorithm);
             this.Controls.Add(this.Algorithm);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Algorithm Visualiser";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,10 +109,10 @@ namespace AlgorithmVisualiser
         #endregion
 
         private System.Windows.Forms.Label Algorithm;
-        private System.Windows.Forms.ComboBox SelectedAlgorithm;
         private System.Windows.Forms.Button Reset;
         private System.Windows.Forms.Panel VisualPanel;
         private System.Windows.Forms.Button Start;
+        private System.Windows.Forms.ComboBox SelectedAlgorithm;
     }
 }
 

@@ -9,6 +9,6 @@ namespace AlgorithmVisualiser
 {
     interface IDisplayAlgorithm
     {
-        void SortArray(int[] Arr, Graphics Visuals, int ArrSize, string type);
+        void SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight);
     }
 }

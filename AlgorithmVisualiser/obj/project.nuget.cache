@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x7weScvSGjScIKnoRpFRduoBo9MNV83n7cLghOmmsqbt1q41Qa/Ki3vD+jf378hSoHB0KdToJHWHuM5Fgv1bzA==",
+  "dgSpecHash": "Fr37Tm/pOHdr0hAmXzd6meqMKJobwGn/v4HQ0Eneqkdsvk/BB2MB98DPBFtLwHt6S2EQrnDy+Jy0ALjfHcXi8g==",
   "success": true,
-  "projectFilePath": "F:\\personal_Projects\\Algorithm_Visualiser\\AlgorithmVisualiser\\AlgorithmVisualiser\\AlgorithmVisualiser.csproj",
+  "projectFilePath": "F:\\personal_Projects\\Algorithm_Visualiser\\Algorithm_Visualiser\\AlgorithmVisualiser\\AlgorithmVisualiser.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alpha\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
     "C:\\Users\\alpha\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
