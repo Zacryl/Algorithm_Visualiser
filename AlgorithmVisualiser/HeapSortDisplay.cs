@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace AlgorithmVisualiser
 {
@@ -11,13 +12,17 @@ namespace AlgorithmVisualiser
         System.Windows.Forms.Timer Delay = new System.Windows.Forms.Timer();
         private int[] arr;
         private Graphics visuals;
-        private int panelWidth;
-        private int panelHeight;
-        private int dNum;
+        private float panelWidth;
+        private float panelHeight;
+        private float dNum;
+        private int SleepTimer = 20;
         Brush whiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
         Brush blackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
         Brush greenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
+        Brush blueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Blue);
+        Brush orangeBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Orange);
+        Brush pinkBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Pink);
         public void MaxHeapify(int[] A, int n, int i)
         {
             int l = 2 * i + 1;
@@ -64,7 +69,20 @@ namespace AlgorithmVisualiser
             panelHeight = PanelHeight;
             panelWidth = PanelWidth;
             dNum = panelWidth / arr.Length;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+            }
             HeapSort(arr,arr.Length);
+           for (int k = 0; k < arr.Length; k++)
+            {
+                if (k == arr.Length - 1 && arr[k - 1] <= arr[k] || arr[k] <= arr[k + 1])
+                {
+                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+                    System.Threading.Thread.Sleep(50);
+                }
+            }
 
         }
     }

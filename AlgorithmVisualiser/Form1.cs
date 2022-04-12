@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Runtime;
 
 namespace AlgorithmVisualiser
 {
@@ -15,7 +16,7 @@ namespace AlgorithmVisualiser
     {
         int[] Arr;
         Graphics visuals;
-        Thread algorithmThread;
+        BackgroundWorker algorithmWorker = null;
         delegate string GetText();
         public Form1()
         {
@@ -25,19 +26,21 @@ namespace AlgorithmVisualiser
         private void initialiseNewArray()
         {
             visuals = VisualPanel.CreateGraphics();
-            int panelSize = VisualPanel.Width;
+            float panelSize = VisualPanel.Width;
             int panelHeight = VisualPanel.Height;
-            int arrSize = 40;
-            int dNum = panelSize / arrSize;
+            float inputArrSize = trackBar1.Value;
+            int arrSize = Convert.ToInt32(inputArrSize);
+            float dNum = Math.Max(panelSize,inputArrSize) / Math.Min(arrSize,panelSize);
             Arr = new int[arrSize];
             visuals.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.Color.Black), 0, 0, panelSize, panelHeight);
             Random rand = new Random();
-            for(int i = 0; i<arrSize; i++){
+            for(int i = 0; i<arrSize; i++)
+            {
                 Arr[i] = rand.Next(0, panelHeight);
             }
             for(int i=0; i<arrSize; i++)
             {
-                visuals.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.Color.White), i* dNum, panelHeight - Arr[i], dNum, panelHeight);
+                visuals.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.Color.White), i*dNum, panelHeight - Arr[i], dNum, panelHeight);
             }
         }
         private string SelectedAlgorithmText()
@@ -56,7 +59,7 @@ namespace AlgorithmVisualiser
                     IDisplayAlgorithm bSA = new BubbleSortDisplay();
                     bSA.SortArray(Arr, visuals, VisualPanel.Width, VisualPanel.Height);
                     break;
-                case "Heap Sort":
+                case "Heap Sort (Not done)":
                     IDisplayAlgorithm hSA = new HeapSortDisplay();
                     hSA.SortArray(Arr, visuals, VisualPanel.Width, VisualPanel.Height);
                     break;
@@ -78,26 +81,47 @@ namespace AlgorithmVisualiser
         }
         private void Reset_Click(object sender, EventArgs e)
         {
-            initialiseNewArray();
+            if (!algorithmWorker.IsBusy || !algorithmWorker.IsBusy && !Start.Enabled)
+            {
+                initialiseNewArray();
+                Start.Enabled = true;
+            }
         }
 
         private void Start_Click(object sender, EventArgs e)
         {
             if (Arr != null)
             {
-                chosenAlgorithm();
-                //algorithmThread = new Thread(chosenAlgorithm);
-                //algorithmThread.Start();
-            }
-            else
-            {
-                initialiseNewArray();
+                if (!algorithmWorker.IsBusy) {
+                    algorithmWorker.RunWorkerAsync();
+                //chosenAlgorithm();
+                }
             }
         }
 
         private void SelectedAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void algorithmWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            chosenAlgorithm();
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            lbl_ArraySize.Text = Convert.ToString(trackBar1.Value);
+        }
+
+        private void VisualPanel_Paint(object sender, PaintEventArgs e)
+        {
+            VisualPanel.BringToFront();
+        }
+
+        private void lbl_ArraySize_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

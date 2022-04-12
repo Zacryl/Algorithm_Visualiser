@@ -10,16 +10,16 @@ namespace AlgorithmVisualiser
         System.Windows.Forms.Timer Delay = new System.Windows.Forms.Timer();
         private int[] arr;
         private Graphics visuals;
-        private int panelWidth;
-        private int panelHeight;
-        private int dNum;
+        private float panelWidth;
+        private float panelHeight;
+        private float dNum;
         Brush whiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
         Brush blackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
         Brush greenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
         Brush blueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Blue);
         Brush orangeBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Orange);
-        int sleepTimer = 80;
+        int sleepTimer;
         int sndSleepTimer = 0;
         public void Merge(int[] array, int p, int q, int r)
         {
@@ -143,6 +143,7 @@ namespace AlgorithmVisualiser
             panelHeight = PanelHeight;
             panelWidth = PanelWidth;
             dNum = panelWidth / arr.Length;
+            sleepTimer = 30;
             Sort(arr,0,arr.Length-1);
             for (int k = 0; k < arr.Length; k++)
             {

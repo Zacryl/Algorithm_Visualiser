@@ -17,6 +17,7 @@ namespace AlgorithmVisualiser
         Brush blackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
         Brush greenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
+        int sleeptimer = 15;
         public void BubbleSort(int[] array)
         {
             while (!sorted)
@@ -27,14 +28,14 @@ namespace AlgorithmVisualiser
                     visuals.FillRectangle(redBrush, i * dNum, panelHeight - array[i], dNum, panelHeight);
                     visuals.FillRectangle(blackBrush, (i-1) * dNum, 0, dNum, panelHeight);
                     visuals.FillRectangle(redBrush, (i-1) * dNum, panelHeight - array[i-1], dNum, panelHeight);
-                    System.Threading.Thread.Sleep(50);
+                    System.Threading.Thread.Sleep(sleeptimer);
                     if (arr[i] < arr[i - 1])
                     {
                         var temp = arr[i];
                         arr[i] = arr[i - 1];
                         arr[i - 1] = temp;
                     }
-                    System.Threading.Thread.Sleep(50);
+                    System.Threading.Thread.Sleep(sleeptimer);
                     visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
                     visuals.FillRectangle(redBrush, i * dNum, panelHeight - array[i], dNum, panelHeight);
                     visuals.FillRectangle(blackBrush, (i - 1) * dNum, 0, dNum, panelHeight);
@@ -50,7 +51,7 @@ namespace AlgorithmVisualiser
                 {
                     visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
                     visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
-                    System.Threading.Thread.Sleep(50);
+                    System.Threading.Thread.Sleep(sleeptimer);
                 }
             }
         }

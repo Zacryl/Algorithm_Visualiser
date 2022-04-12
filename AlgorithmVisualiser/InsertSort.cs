@@ -9,9 +9,9 @@ namespace AlgorithmVisualiser
         System.Windows.Forms.Timer Delay = new System.Windows.Forms.Timer();
         private int[] arr;
         private Graphics visuals;
-        private int panelWidth;
-        private int panelHeight;
-        private int dNum;
+        private float panelWidth;
+        private float panelHeight;
+        private float dNum;
         Brush whiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
         Brush blackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
