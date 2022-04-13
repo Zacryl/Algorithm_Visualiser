@@ -22,6 +22,7 @@ namespace AlgorithmVisualiser
         {
             InitializeComponent();
             SelectedAlgorithm.Text = "Select Algorithm";
+            
         }
         private void initialiseNewArray()
         {
@@ -128,6 +129,11 @@ namespace AlgorithmVisualiser
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

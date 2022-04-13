@@ -62,7 +62,7 @@ namespace AlgorithmVisualiser
             }
             return true;
         }
-        private void CheckArray()
+        void CheckArray()
         {
             for (int k = 0; k < arr.Length; k++)
             {
@@ -74,6 +74,14 @@ namespace AlgorithmVisualiser
                     visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
                     visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
                 }
+            }
+        }
+        public void ReDraw()
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+                visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
             }
         }
         private void ColorPre(int i)

@@ -43,18 +43,23 @@ namespace AlgorithmVisualiser
             // 
             // VisualPanel
             // 
+            this.VisualPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.VisualPanel.AutoSize = true;
             this.VisualPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.VisualPanel.CausesValidation = false;
             this.VisualPanel.Controls.Add(this.lbl_ArraySize);
-            this.VisualPanel.Location = new System.Drawing.Point(13, 42);
+            this.VisualPanel.Location = new System.Drawing.Point(13, 41);
             this.VisualPanel.Name = "VisualPanel";
-            this.VisualPanel.Size = new System.Drawing.Size(775, 396);
+            this.VisualPanel.Size = new System.Drawing.Size(775, 397);
             this.VisualPanel.TabIndex = 3;
             this.VisualPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.VisualPanel_Paint);
             // 
             // lbl_ArraySize
             // 
+            this.lbl_ArraySize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_ArraySize.AutoSize = true;
             this.lbl_ArraySize.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ArraySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -135,6 +140,7 @@ namespace AlgorithmVisualiser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.Start);
@@ -142,9 +148,9 @@ namespace AlgorithmVisualiser
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.SelectedAlgorithm);
             this.Controls.Add(this.Algorithm);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Algorithm Visualiser";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.VisualPanel.ResumeLayout(false);
             this.VisualPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();

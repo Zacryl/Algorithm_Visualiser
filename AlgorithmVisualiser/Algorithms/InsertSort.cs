@@ -50,7 +50,7 @@ namespace AlgorithmVisualiser
             dNum = panelWidth / arr.Length;
             sleepTimer = Convert.ToInt32(dNum) * 4;
             InsertionSort(Arr);
-            checkArray();
+            CheckArray();
         }
         private void Color(int i, int key)
         {
@@ -65,7 +65,7 @@ namespace AlgorithmVisualiser
             visuals.FillRectangle(redBrush, i * dNum, panelHeight - key, dNum, panelHeight);
             System.Threading.Thread.Sleep(sleepTimer);
         }
-        private void checkArray()
+        private void CheckArray()
         {
             for (int k = 0; k < arr.Length; k++)
             {
@@ -77,6 +77,15 @@ namespace AlgorithmVisualiser
                     visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
                     visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
                 }
+            }
+        }
+
+        public void ReDraw()
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+                visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
             }
         }
     }

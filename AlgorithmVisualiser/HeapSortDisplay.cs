@@ -22,6 +22,7 @@ namespace AlgorithmVisualiser
         Brush greenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
         Brush orangeBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Orange);
         Brush purpleBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Purple);
+        int ReDrawPurple;
         
         private void MaxHeapify(int[] A, int n, int i)
         {
@@ -86,7 +87,9 @@ namespace AlgorithmVisualiser
                 //Visuals
                 SwapColor(i, 0);
                 ReColor(i, 0,"sort");
-                
+                //FIX THIS (Only attempt at implement) (Dinner time)
+                ReDrawPurple = i;
+                ReDraw();
                 //Algorithm
                 MaxHeapify(A, i, 0);
             }
@@ -103,6 +106,23 @@ namespace AlgorithmVisualiser
             HeapSort(arr,arr.Length);
             CheckArray();
 
+        }
+        public void ReDraw()
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (i > ReDrawPurple)
+                {
+                    visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(purpleBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
+                }
+                else
+                {
+                    visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
+                }
+
+            }
         }
 
         //Color methods

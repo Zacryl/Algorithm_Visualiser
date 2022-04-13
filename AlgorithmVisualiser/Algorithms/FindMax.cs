@@ -43,12 +43,16 @@ namespace AlgorithmVisualiser
             panelWidth = PanelWidth;
             dNum = panelWidth / arr.Length;
             Array.Sort(arr);
-            for(int i = 0; i < arr.Length; i++)
+            ReDraw();
+            FindMax(Arr);
+        }
+        public void ReDraw()
+        {
+            for (int i = 0; i < arr.Length; i++)
             {
                 visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
                 visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
             }
-            FindMax(Arr);
         }
     }
 }

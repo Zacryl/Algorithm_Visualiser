@@ -21,7 +21,30 @@ namespace AlgorithmVisualiser
         Brush orangeBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Orange);
         int sleepTimer;
         int sndSleepTimer = 0;
-        private void Merge(int[] array, int p, int q, int r)
+
+        public void ReDraw()
+        {
+            for(int i = 0; i < arr.Length - 1; i++)
+            {
+                visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+                visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
+            }
+        }
+
+        ///<param name="array">
+        ///<param name="p">  
+        ///<param name="q">
+        ///<param name="r">  
+        ///Takes a type int[] array an int p left border of the array, int r for right and q for 
+        ///middle
+        /// </param>
+        /// </param>
+        /// </param>
+        /// </param>
+        ///<summary> 
+        ///For MergeSort use Sort method instead of this method. - Merge part of Merge Sort Algorithm.
+        ///</summary>
+        void Merge(int[] array, int p, int q, int r)
         {
             int i, j, k;
             int n1 = q - p + 1;
@@ -118,6 +141,17 @@ namespace AlgorithmVisualiser
                 j++;
             }
         }
+        ///<param name="array">
+        ///<param name="p">  
+        ///<param name="r"> 
+        ///Takes a type int[] array an int p left border of the array, int r for right.
+        ///middle
+        /// </param>
+        /// </param>
+        /// </param>
+        ///<summary> 
+        ///MergeSort method. Algorithm runs O(nlog(n))
+        ///</summary>
         private void Sort(int[] array, int p, int r)
         {
             if (p < r)
@@ -128,7 +162,21 @@ namespace AlgorithmVisualiser
                 Merge(array, p, q, r);
             }
         }
-        //1 time setup
+
+        ///<param name="Arr">
+        ///<param name="Visuals">  
+        ///<param name="PanelWidth">
+        ///<param name="PanelHeight">  
+        ///Takes a type int[] Arr, Graphics Visuals, int PanelWidth for the height of the panel, 
+        ///int PanelHeight for the height of the panel
+        ///middle
+        /// </param>
+        /// </param>
+        /// </param>
+        /// </param>
+        ///<summary> 
+        /// One time setup of the interface that starts the MergeSort.
+        ///</summary>
         void IDisplayAlgorithm.SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight)
         {
             arr = Arr;
@@ -138,6 +186,10 @@ namespace AlgorithmVisualiser
             dNum = panelWidth / arr.Length;
             sleepTimer = Convert.ToInt32(dNum*2.5f);
             Sort(arr,0,arr.Length-1);
+            CheckArray();
+        }
+        void CheckArray()
+        {
             for (int k = 0; k < arr.Length; k++)
             {
                 if (k == arr.Length - 1 && arr[k - 1] <= arr[k] || arr[k] <= arr[k + 1])
