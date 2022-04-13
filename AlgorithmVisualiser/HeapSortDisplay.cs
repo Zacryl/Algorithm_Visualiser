@@ -70,7 +70,7 @@ namespace AlgorithmVisualiser
                 MaxHeapify(A, n, i);
             }
         }
-        public void HeapSort(int[] A, int n)
+        private void HeapSort(int[] A, int n)
         {
             BuildMaxHeap(A, n);
             for (int i = n - 1; i > 0; i--)
@@ -91,11 +91,26 @@ namespace AlgorithmVisualiser
                 MaxHeapify(A, i, 0);
             }
         }
-        private void ReColor(int k, int v,string Type)
+        //1 time setup
+        void IDisplayAlgorithm.SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight)
+        {
+            arr = Arr;
+            visuals = Visuals;
+            panelHeight = PanelHeight;
+            panelWidth = PanelWidth;
+            dNum = panelWidth / arr.Length;
+            SleepTimer = Convert.ToInt32(dNum * 2.5f);
+            HeapSort(arr,arr.Length);
+            CheckArray();
+
+        }
+
+        //Color methods
+        private void ReColor(int k, int v, string Type)
         {
             Brush Color1 = greenBrush;
             Brush Color2 = greenBrush;
-            if(Type == "sort")
+            if (Type == "sort")
             {
                 Color1 = purpleBrush;
                 Color2 = whiteBrush;
@@ -106,7 +121,7 @@ namespace AlgorithmVisualiser
             visuals.FillRectangle(Color2, v * dNum, panelHeight - arr[v], dNum, panelHeight);
             System.Threading.Thread.Sleep(SleepTimer);
         }
-            private void SwapColor(int k,int v)
+        private void SwapColor(int k, int v)
         {
             visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
             visuals.FillRectangle(redBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
@@ -168,22 +183,12 @@ namespace AlgorithmVisualiser
                 if (k == arr.Length - 1 && arr[k - 1] <= arr[k] || arr[k] <= arr[k + 1])
                 {
                     visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+                    visuals.FillRectangle(redBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
                     System.Threading.Thread.Sleep(50);
+                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
                 }
             }
-        }
-        void IDisplayAlgorithm.SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight)
-        {
-            arr = Arr;
-            visuals = Visuals;
-            panelHeight = PanelHeight;
-            panelWidth = PanelWidth;
-            dNum = panelWidth / arr.Length;
-            SleepTimer = Convert.ToInt32(dNum)*5;
-            HeapSort(arr,arr.Length);
-            CheckArray();
-
         }
     }
 }

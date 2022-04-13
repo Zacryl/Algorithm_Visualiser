@@ -16,7 +16,7 @@ namespace AlgorithmVisualiser
         Brush blackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
         Brush greenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
-        public int FindMax(int[] array)
+        private int FindMax(int[] array)
         {
             int max = 0;
             for (int i = 0; i < array.Length; i++)

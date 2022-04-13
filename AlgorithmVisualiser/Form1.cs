@@ -94,8 +94,11 @@ namespace AlgorithmVisualiser
             {
                 if (!algorithmWorker.IsBusy) {
                     algorithmWorker.RunWorkerAsync();
-                //chosenAlgorithm();
                 }
+            }
+            else
+            {
+                Reset_Click(null, null);
             }
         }
 
@@ -122,6 +125,11 @@ namespace AlgorithmVisualiser
         private void lbl_ArraySize_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,10 +29,10 @@ namespace AlgorithmVisualiser
         /// </summary>
         private void InitializeComponent()
         {
-            this.Algorithm = new System.Windows.Forms.Label();
-            this.Reset = new System.Windows.Forms.Button();
             this.VisualPanel = new System.Windows.Forms.Panel();
             this.lbl_ArraySize = new System.Windows.Forms.Label();
+            this.Algorithm = new System.Windows.Forms.Label();
+            this.Reset = new System.Windows.Forms.Button();
             this.SelectedAlgorithm = new System.Windows.Forms.ComboBox();
             this.Start = new System.Windows.Forms.Button();
             this.algorithmWorker = new System.ComponentModel.BackgroundWorker();
@@ -40,6 +40,31 @@ namespace AlgorithmVisualiser
             this.VisualPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // VisualPanel
+            // 
+            this.VisualPanel.AutoSize = true;
+            this.VisualPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.VisualPanel.CausesValidation = false;
+            this.VisualPanel.Controls.Add(this.lbl_ArraySize);
+            this.VisualPanel.Location = new System.Drawing.Point(13, 42);
+            this.VisualPanel.Name = "VisualPanel";
+            this.VisualPanel.Size = new System.Drawing.Size(775, 396);
+            this.VisualPanel.TabIndex = 3;
+            this.VisualPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.VisualPanel_Paint);
+            // 
+            // lbl_ArraySize
+            // 
+            this.lbl_ArraySize.AutoSize = true;
+            this.lbl_ArraySize.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_ArraySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_ArraySize.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbl_ArraySize.Location = new System.Drawing.Point(3, 0);
+            this.lbl_ArraySize.Name = "lbl_ArraySize";
+            this.lbl_ArraySize.Size = new System.Drawing.Size(75, 17);
+            this.lbl_ArraySize.TabIndex = 0;
+            this.lbl_ArraySize.Text = "ArraySize: 50";
+            this.lbl_ArraySize.Click += new System.EventHandler(this.lbl_ArraySize_Click);
             // 
             // Algorithm
             // 
@@ -59,29 +84,6 @@ namespace AlgorithmVisualiser
             this.Reset.Text = "Generate New Array";
             this.Reset.UseVisualStyleBackColor = true;
             this.Reset.Click += new System.EventHandler(this.Reset_Click);
-            // 
-            // VisualPanel
-            // 
-            this.VisualPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.VisualPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.VisualPanel.Controls.Add(this.lbl_ArraySize);
-            this.VisualPanel.Location = new System.Drawing.Point(13, 42);
-            this.VisualPanel.Name = "VisualPanel";
-            this.VisualPanel.Size = new System.Drawing.Size(775, 396);
-            this.VisualPanel.TabIndex = 3;
-            this.VisualPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.VisualPanel_Paint);
-            // 
-            // lbl_ArraySize
-            // 
-            this.lbl_ArraySize.AutoSize = true;
-            this.lbl_ArraySize.Location = new System.Drawing.Point(4, 4);
-            this.lbl_ArraySize.Name = "lbl_ArraySize";
-            this.lbl_ArraySize.Size = new System.Drawing.Size(67, 15);
-            this.lbl_ArraySize.TabIndex = 0;
-            this.lbl_ArraySize.Text = "ArraySize: 2";
-            this.lbl_ArraySize.Click += new System.EventHandler(this.lbl_ArraySize_Click);
             // 
             // SelectedAlgorithm
             // 
@@ -120,13 +122,13 @@ namespace AlgorithmVisualiser
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(421, 12);
-            this.trackBar1.Maximum = 1000;
+            this.trackBar1.Maximum = 100;
             this.trackBar1.Minimum = 2;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBar1.Size = new System.Drawing.Size(367, 45);
             this.trackBar1.TabIndex = 5;
-            this.trackBar1.Value = 2;
+            this.trackBar1.Value = 50;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // Form1
@@ -140,6 +142,7 @@ namespace AlgorithmVisualiser
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.SelectedAlgorithm);
             this.Controls.Add(this.Algorithm);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Algorithm Visualiser";
             this.VisualPanel.ResumeLayout(false);

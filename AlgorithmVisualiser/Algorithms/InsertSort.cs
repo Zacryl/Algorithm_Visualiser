@@ -12,32 +12,22 @@ namespace AlgorithmVisualiser
         private float panelWidth;
         private float panelHeight;
         private float dNum;
+        private int sleepTimer;
         Brush whiteBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
         Brush blackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
         Brush greenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
-        public void InsertionSort(int[] array)
+        private void InsertionSort(int[] array)
         {
             for (int j = 1; j < array.Length; j++)
             {
                 int key = array[j];
                 int i = j - 1;;
                 visuals.FillRectangle(greenBrush, j * dNum, panelHeight - key, dNum, panelHeight);
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(sleepTimer);
                 while (i >= 0 && array[i] > key)
                 {
-                    
-                    
-                    visuals.FillRectangle(blackBrush, (i+1) * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(redBrush, (i+1) * dNum, panelHeight - key, dNum, panelHeight);
-                    visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(redBrush, i * dNum, panelHeight - array[i], dNum, panelHeight);
-                    System.Threading.Thread.Sleep(50);
-                    visuals.FillRectangle(redBrush, (i + 1) * dNum, panelHeight - array[i], dNum, panelHeight);
-                    visuals.FillRectangle(whiteBrush, (i + 1) * dNum, panelHeight - array[i], dNum, panelHeight);
-                    visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(redBrush, i * dNum, panelHeight - key, dNum, panelHeight);
-                    System.Threading.Thread.Sleep(50);
+                    Color(i,key);
                     array[i + 1] = array[i];
                     i -= 1;
                 }
@@ -58,7 +48,25 @@ namespace AlgorithmVisualiser
             panelHeight = PanelHeight;
             panelWidth = PanelWidth;
             dNum = panelWidth / arr.Length;
+            sleepTimer = Convert.ToInt32(dNum) * 4;
             InsertionSort(Arr);
+            checkArray();
+        }
+        private void Color(int i, int key)
+        {
+            visuals.FillRectangle(blackBrush, (i + 1) * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(redBrush, (i + 1) * dNum, panelHeight - key, dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(redBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
+            System.Threading.Thread.Sleep(sleepTimer);
+            visuals.FillRectangle(redBrush, (i + 1) * dNum, panelHeight - arr[i], dNum, panelHeight);
+            visuals.FillRectangle(whiteBrush, (i + 1) * dNum, panelHeight - arr[i], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(redBrush, i * dNum, panelHeight - key, dNum, panelHeight);
+            System.Threading.Thread.Sleep(sleepTimer);
+        }
+        private void checkArray()
+        {
             for (int k = 0; k < arr.Length; k++)
             {
                 if (k == arr.Length - 1 && arr[k - 1] <= arr[k] || arr[k] <= arr[k + 1])
