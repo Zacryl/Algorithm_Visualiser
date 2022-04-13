@@ -78,9 +78,9 @@ namespace AlgorithmVisualiser
             this.lbl_ArraySize.AutoSize = true;
             this.lbl_ArraySize.Location = new System.Drawing.Point(4, 4);
             this.lbl_ArraySize.Name = "lbl_ArraySize";
-            this.lbl_ArraySize.Size = new System.Drawing.Size(58, 15);
+            this.lbl_ArraySize.Size = new System.Drawing.Size(67, 15);
             this.lbl_ArraySize.TabIndex = 0;
-            this.lbl_ArraySize.Text = "ArraySize:";
+            this.lbl_ArraySize.Text = "ArraySize: 2";
             this.lbl_ArraySize.Click += new System.EventHandler(this.lbl_ArraySize_Click);
             // 
             // SelectedAlgorithm
@@ -91,7 +91,7 @@ namespace AlgorithmVisualiser
             "Insertion Sort",
             "Bubble Sort",
             "Merge Sort",
-            "Heap Sort (Not done)",
+            "Heap Sort",
             "-Search Algorithms-",
             "Find Max"});
             this.SelectedAlgorithm.Location = new System.Drawing.Point(81, 13);
@@ -120,7 +120,7 @@ namespace AlgorithmVisualiser
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(421, 12);
-            this.trackBar1.Maximum = 775;
+            this.trackBar1.Maximum = 1000;
             this.trackBar1.Minimum = 2;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;

@@ -150,8 +150,10 @@ namespace AlgorithmVisualiser
                 if (k == arr.Length - 1 && arr[k - 1] <= arr[k] || arr[k] <= arr[k + 1])
                 {
                     visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+                    visuals.FillRectangle(redBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
                     System.Threading.Thread.Sleep(50);
+                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
                 }
             }
         }

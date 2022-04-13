@@ -50,15 +50,6 @@ namespace AlgorithmVisualiser
                     }
                 }
             }
-            for(int k = 0; k < arr.Length; k++)
-            {
-                if(k== arr.Length-1 && arr[k-1]<=arr[k] || arr[k]<= arr[k+1])
-                {
-                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
-                    System.Threading.Thread.Sleep(50);
-                }
-            }
         }
         void IDisplayAlgorithm.SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight)
         {
@@ -68,6 +59,17 @@ namespace AlgorithmVisualiser
             panelWidth = PanelWidth;
             dNum = panelWidth / arr.Length;
             InsertionSort(Arr);
+            for (int k = 0; k < arr.Length; k++)
+            {
+                if (k == arr.Length - 1 && arr[k - 1] <= arr[k] || arr[k] <= arr[k + 1])
+                {
+                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(redBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+                    System.Threading.Thread.Sleep(50);
+                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+                }
+            }
         }
     }
 }

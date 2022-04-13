@@ -59,7 +59,7 @@ namespace AlgorithmVisualiser
                     IDisplayAlgorithm bSA = new BubbleSortDisplay();
                     bSA.SortArray(Arr, visuals, VisualPanel.Width, VisualPanel.Height);
                     break;
-                case "Heap Sort (Not done)":
+                case "Heap Sort":
                     IDisplayAlgorithm hSA = new HeapSortDisplay();
                     hSA.SortArray(Arr, visuals, VisualPanel.Width, VisualPanel.Height);
                     break;
@@ -111,7 +111,7 @@ namespace AlgorithmVisualiser
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            lbl_ArraySize.Text = Convert.ToString(trackBar1.Value);
+            lbl_ArraySize.Text = string.Format("ArraySize {0}", trackBar1.Value);
         }
 
         private void VisualPanel_Paint(object sender, PaintEventArgs e)
