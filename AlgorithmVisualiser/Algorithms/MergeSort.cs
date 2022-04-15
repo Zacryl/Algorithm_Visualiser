@@ -140,6 +140,7 @@ namespace AlgorithmVisualiser
             Sort(arr,0,arr.Length-1);
             CheckArray();
         }
+
         void CheckArray()
         {
             for (int k = 0; k < arr.Length; k++)

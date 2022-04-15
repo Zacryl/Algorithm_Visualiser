@@ -18,13 +18,20 @@ namespace AlgorithmVisualiser
         Brush blackBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         Brush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
         Brush greenBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
+       
+        ///<param name="array">  
+        ///Takes a type int[] array.
+        /// </param>
+        ///<summary> 
+        /// Bubblesort Algorithm
+        ///</summary>
         private void BubbleSort(int[] array)
         {
             while (!sorted)
             {
                 for (int i = 1; i < array.Length; i++)
                 {
-                    ColorPre(i);
+                    ColorRed(i);
                     
                     if (arr[i] < arr[i - 1])
                     {
@@ -33,12 +40,26 @@ namespace AlgorithmVisualiser
                         arr[i - 1] = temp;
                     }
 
-                    ColorPost(i);
+                    ColorRed(i);
+                    ColorWhite(i);
                 }
                 sorted = isSorted();
             }
         }
-
+        ///<param name="Arr">
+        ///<param name="Visuals">  
+        ///<param name="PanelWidth">
+        ///<param name="PanelHeight">  
+        ///Takes a type int[] Arr, Graphics Visuals, int PanelWidth for the height of the panel, 
+        ///int PanelHeight for the height of the panel
+        ///middle
+        /// </param>
+        /// </param>
+        /// </param>
+        /// </param>
+        ///<summary> 
+        /// One time setup of the interface that starts the Bubblesort.
+        ///</summary>
         void IDisplayAlgorithm.SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight)
         {
             arr = Arr;
@@ -51,6 +72,9 @@ namespace AlgorithmVisualiser
             CheckArray();
         }
 
+        ///<summary> 
+        /// Checks if the it sorted and returns the result.
+        ///</summary>
         private bool isSorted()
         {
             for(int j = 1; j<arr.Length; j++)
@@ -62,6 +86,10 @@ namespace AlgorithmVisualiser
             }
             return true;
         }
+        ///<summary> 
+        /// CheckArray is a visual/Debug tool that goes through the array and if the sort
+        /// is done right it will color that visual bar green.
+        ///</summary>
         void CheckArray()
         {
             for (int k = 0; k < arr.Length; k++)
@@ -84,7 +112,13 @@ namespace AlgorithmVisualiser
                 visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
             }
         }
-        private void ColorPre(int i)
+        ///<param name="i">
+        ///Takes int i which is the position and index of the array
+        ///</param>
+        ///<summary> 
+        /// Colors the two parts about to be swapped red before it happens.
+        ///</summary>
+        private void ColorRed(int i)
         {
             visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
             visuals.FillRectangle(redBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
@@ -92,16 +126,12 @@ namespace AlgorithmVisualiser
             visuals.FillRectangle(redBrush, (i - 1) * dNum, panelHeight - arr[i - 1], dNum, panelHeight);
             System.Threading.Thread.Sleep(sleepTimer);
         }
-        private void ColorPost(int i)
-        {
-            visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
-            visuals.FillRectangle(redBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
-            visuals.FillRectangle(blackBrush, (i - 1) * dNum, 0, dNum, panelHeight);
-            visuals.FillRectangle(redBrush, (i - 1) * dNum, panelHeight - arr[i - 1], dNum, panelHeight);
-            System.Threading.Thread.Sleep(sleepTimer);
-            ColorWhite(i);
-            System.Threading.Thread.Sleep(sleepTimer);
-        }
+        ///<param name="i">
+        ///Takes int i which is the position and index of the array
+        ///</param>
+        ///<summary> 
+        /// Colors everything not focused white.
+        ///</summary>
         private void ColorWhite(int i)
         {
             int k = i-1;
@@ -114,6 +144,7 @@ namespace AlgorithmVisualiser
                 visuals.FillRectangle(blackBrush, j * dNum, 0, dNum, panelHeight);
                 visuals.FillRectangle(whiteBrush, j * dNum, panelHeight - arr[j], dNum, panelHeight);
             }
+            System.Threading.Thread.Sleep(sleepTimer);
         }
     }
 }
