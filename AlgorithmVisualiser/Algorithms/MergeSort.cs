@@ -22,15 +22,6 @@ namespace AlgorithmVisualiser
         int sleepTimer;
         int sndSleepTimer = 0;
 
-        public void ReDraw()
-        {
-            for(int i = 0; i < arr.Length - 1; i++)
-            {
-                visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
-                visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
-            }
-        }
-
         ///<param name="array">
         ///<param name="p">  
         ///<param name="q">
@@ -51,37 +42,15 @@ namespace AlgorithmVisualiser
             int n2 = r - q;
             int[] L = new int[n1];
             int[] R = new int[n2];
-            visuals.FillRectangle(blackBrush, r * dNum, 0, dNum, panelHeight);
-            visuals.FillRectangle(greenBrush, r * dNum, panelHeight - array[r], dNum, panelHeight);
-            visuals.FillRectangle(blackBrush, p * dNum, 0, dNum, panelHeight);
-            visuals.FillRectangle(greenBrush, p * dNum, panelHeight - array[p], dNum, panelHeight);
-            visuals.FillRectangle(blackBrush, q * dNum, 0, dNum, panelHeight);
-            visuals.FillRectangle(blueBrush, q * dNum, panelHeight - array[q], dNum, panelHeight);
+
+            InitialColors(p, q, r);
+
             for (i = 0; i < n1; i++)
             {
                 L[i] = array[p + i];
                 if (p + i != p && p + i != q)
                 {
-                    visuals.FillRectangle(blackBrush, (p + i) * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(redBrush, (p + i) * dNum, panelHeight - array[p + i], dNum, panelHeight);
-                    visuals.FillRectangle(blackBrush, (q + i + 1) * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(redBrush, (q + i + 1) * dNum, panelHeight - array[q + i + 1], dNum, panelHeight);
-                    //visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
-                    //visuals.FillRectangle(redBrush, i * dNum, panelHeight - array[i], dNum, panelHeight);
-                    Thread.Sleep(sleepTimer);
-                    visuals.FillRectangle(blackBrush, (p + i) * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(whiteBrush, (p + i) * dNum, panelHeight - array[p + i], dNum, panelHeight);
-                    visuals.FillRectangle(blackBrush, (q + i + 1) * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(whiteBrush, (q + i + 1) * dNum, panelHeight - array[q + i + 1], dNum, panelHeight);
-                    //visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
-                    //visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - array[i], dNum, panelHeight);
-                    visuals.FillRectangle(blackBrush, q * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(blueBrush, q * dNum, panelHeight - array[q], dNum, panelHeight);
-                    visuals.FillRectangle(blackBrush, r * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(greenBrush, r * dNum, panelHeight - array[r], dNum, panelHeight);
-                    visuals.FillRectangle(blackBrush, p * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(greenBrush, p * dNum, panelHeight - array[p], dNum, panelHeight);
-                    Thread.Sleep(sndSleepTimer);
+                    CompareColors(i,q,p,r);
                 }
             }
             for (j = 0; j < n2; j++)
@@ -97,50 +66,33 @@ namespace AlgorithmVisualiser
                 {
 
                     array[k] = L[i++];
-                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(redBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                    Thread.Sleep(sleepTimer);
-                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(whiteBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                    Thread.Sleep(sndSleepTimer);
+                    RedWhiteColor(k);
                 }
                 else
                 {
                     array[k] = R[j++];
-                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(redBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                    Thread.Sleep(sleepTimer);
-                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                    visuals.FillRectangle(whiteBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                    Thread.Sleep(sndSleepTimer);
+                    RedWhiteColor(k);
+
                 }
                 k++;
             }
             while (i < n1)
             {
                 array[k] = L[i];
-                visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                visuals.FillRectangle(redBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                Thread.Sleep(sleepTimer);
-                visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                visuals.FillRectangle(whiteBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                Thread.Sleep(sndSleepTimer);
+                RedWhiteColor(k);
+
                 i++;
                 k++;
             }
             while (j < n2)
             {
                 array[k] = R[j];
-                visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                visuals.FillRectangle(redBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                Thread.Sleep(sleepTimer);
-                visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                visuals.FillRectangle(whiteBrush, k * dNum, panelHeight - array[k], dNum, panelHeight);
-                Thread.Sleep(sndSleepTimer);
+                RedWhiteColor(k);
                 k++;
                 j++;
             }
         }
+
         ///<param name="array">
         ///<param name="p">  
         ///<param name="r"> 
@@ -200,6 +152,51 @@ namespace AlgorithmVisualiser
                     visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
                     visuals.FillRectangle(greenBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
                 }
+            }
+        }
+        void InitialColors(int p, int q ,int r)
+        {
+            visuals.FillRectangle(blackBrush, r * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(greenBrush, r * dNum, panelHeight - arr[r], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, p * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(greenBrush, p * dNum, panelHeight - arr[p], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, q * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(blueBrush, q * dNum, panelHeight - arr[q], dNum, panelHeight);
+        }
+        void RedWhiteColor(int k)
+        {
+            visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(redBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+            Thread.Sleep(sleepTimer);
+            visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(whiteBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+            Thread.Sleep(sndSleepTimer);
+        }
+        private void CompareColors(int i, int p, int q, int r)
+        {
+            visuals.FillRectangle(blackBrush, (p + i) * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(redBrush, (p + i) * dNum, panelHeight - arr[p + i], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, (q + i + 1) * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(redBrush, (q + i + 1) * dNum, panelHeight - arr[q + i + 1], dNum, panelHeight);
+            Thread.Sleep(sleepTimer);
+            visuals.FillRectangle(blackBrush, (p + i) * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(whiteBrush, (p + i) * dNum, panelHeight - arr[p + i], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, (q + i + 1) * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(whiteBrush, (q + i + 1) * dNum, panelHeight - arr[q + i + 1], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, q * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(blueBrush, q * dNum, panelHeight - arr[q], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, r * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(greenBrush, r * dNum, panelHeight - arr[r], dNum, panelHeight);
+            visuals.FillRectangle(blackBrush, p * dNum, 0, dNum, panelHeight);
+            visuals.FillRectangle(greenBrush, p * dNum, panelHeight - arr[p], dNum, panelHeight);
+            Thread.Sleep(sndSleepTimer);
+        }
+        public void ReDraw()
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
+                visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
             }
         }
     }

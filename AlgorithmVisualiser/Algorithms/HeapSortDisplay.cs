@@ -58,6 +58,8 @@ namespace AlgorithmVisualiser
                 SwapColor(i, largest);
                 ReColor(i, largest,"green");
                 whiteRLI(l, n, r, i);
+
+                //Algorithm
                 MaxHeapify(A, n, largest);
             }
             //Visuals
@@ -88,8 +90,8 @@ namespace AlgorithmVisualiser
                 SwapColor(i, 0);
                 ReColor(i, 0,"sort");
                 //FIX THIS (Only attempt at implement) (Dinner time)
-                ReDrawPurple = i;
-                ReDraw();
+                //ReDrawPurple = i;
+                //ReDraw();
                 //Algorithm
                 MaxHeapify(A, i, 0);
             }
