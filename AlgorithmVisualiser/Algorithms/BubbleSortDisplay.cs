@@ -42,6 +42,7 @@ namespace AlgorithmVisualiser
 
                     ColorRed(i);
                     ColorWhite(i);
+                    ReDraw();
                 }
                 sorted = isSorted();
             }

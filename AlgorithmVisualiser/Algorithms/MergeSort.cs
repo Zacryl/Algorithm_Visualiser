@@ -113,6 +113,7 @@ namespace AlgorithmVisualiser
                 Sort(array, q + 1, r);
                 Merge(array, p, q, r);
             }
+            ReDraw();
         }
 
         ///<param name="Arr">

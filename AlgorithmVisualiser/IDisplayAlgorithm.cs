@@ -17,6 +17,5 @@ namespace AlgorithmVisualiser
         /// is done right it will color that visual bar green.
         ///</summary>
         void SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight);
-        void ReDraw();
     }
 }

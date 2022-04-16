@@ -148,6 +148,8 @@ namespace AlgorithmVisualiser
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.SelectedAlgorithm);
             this.Controls.Add(this.Algorithm);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "Form1";
             this.Text = "Algorithm Visualiser";
             this.Load += new System.EventHandler(this.Form1_Load);

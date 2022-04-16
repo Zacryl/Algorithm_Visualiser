@@ -32,13 +32,8 @@ namespace AlgorithmVisualiser
                     i -= 1;
                 }
                 array[i + 1] = key;
-                for (int k = 0; k < arr.Length; k++)
-                {
-                    {
-                        visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
-                        visuals.FillRectangle(whiteBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
-                    }
-                }
+                ColorWhite();
+                ReDraw();
             }
         }
         void IDisplayAlgorithm.SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight)
@@ -64,6 +59,17 @@ namespace AlgorithmVisualiser
             visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
             visuals.FillRectangle(redBrush, i * dNum, panelHeight - key, dNum, panelHeight);
             System.Threading.Thread.Sleep(sleepTimer);
+        }
+
+        private void ColorWhite()
+        {
+            for (int k = 0; k < arr.Length; k++)
+            {
+                {
+                    visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
+                    visuals.FillRectangle(whiteBrush, k * dNum, panelHeight - arr[k], dNum, panelHeight);
+                }
+            }
         }
         private void CheckArray()
         {

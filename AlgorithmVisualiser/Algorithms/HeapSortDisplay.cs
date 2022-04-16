@@ -64,9 +64,10 @@ namespace AlgorithmVisualiser
             }
             //Visuals
             whiteRLI(l,n,r,i);
+            ReDraw();
         }
 
-        public void BuildMaxHeap(int[] A, int n)
+        private void BuildMaxHeap(int[] A, int n)
         {
             for (int i = n / 2 - 1; i >= 0; i--)
             {
@@ -90,8 +91,8 @@ namespace AlgorithmVisualiser
                 SwapColor(i, 0);
                 ReColor(i, 0,"sort");
                 //FIX THIS (Only attempt at implement) (Dinner time)
-                //ReDrawPurple = i;
-                //ReDraw();
+                ReDrawPurple = i;
+                ReDraw();
                 //Algorithm
                 MaxHeapify(A, i, 0);
             }
@@ -113,7 +114,7 @@ namespace AlgorithmVisualiser
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                if (i > ReDrawPurple)
+                if (i >= ReDrawPurple && ReDrawPurple>0)
                 {
                     visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
                     visuals.FillRectangle(purpleBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
