@@ -23,7 +23,15 @@ namespace AlgorithmVisualiser
         Brush orangeBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Orange);
         Brush purpleBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Purple);
         int ReDrawPurple;
-        
+
+        ///<param name="A">  
+        ///<param name="n"> 
+        ///Takes a type int[] array, int n and int i.
+        /// </param>
+        /// </param>
+        ///<summary> 
+        /// MaxHeapify used for BuildMaxHeap and HeapSort
+        ///</summary>
         private void MaxHeapify(int[] A, int n, int i)
         {
             //Algorithm
@@ -67,6 +75,14 @@ namespace AlgorithmVisualiser
             ReDraw();
         }
 
+        ///<param name="A">  
+        ///<param name="n"> 
+        ///Takes a type int[] array and int n.
+        /// </param>
+        /// </param>
+        ///<summary> 
+        /// Builds a MaxHeap used for HeapSort.
+        ///</summary>
         private void BuildMaxHeap(int[] A, int n)
         {
             for (int i = n / 2 - 1; i >= 0; i--)
@@ -74,6 +90,15 @@ namespace AlgorithmVisualiser
                 MaxHeapify(A, n, i);
             }
         }
+
+        ///<param name="array">  
+        ///<param name="n"> 
+        ///Takes a type int[] array and int n.
+        /// </param>
+        /// </param>
+        ///<summary> 
+        /// HeapSort Algorithm with n being the length of the array.
+        ///</summary>
         private void HeapSort(int[] A, int n)
         {
             BuildMaxHeap(A, n);
@@ -90,14 +115,26 @@ namespace AlgorithmVisualiser
                 //Visuals
                 SwapColor(i, 0);
                 ReColor(i, 0,"sort");
-                //FIX THIS (Only attempt at implement) (Dinner time)
                 ReDrawPurple = i;
                 ReDraw();
                 //Algorithm
                 MaxHeapify(A, i, 0);
             }
         }
-        //1 time setup
+        ///<param name="Arr">
+        ///<param name="Visuals">  
+        ///<param name="PanelWidth">
+        ///<param name="PanelHeight">  
+        ///Takes a type int[] Arr, Graphics Visuals, int PanelWidth for the height of the panel, 
+        ///int PanelHeight for the height of the panel
+        ///middle
+        /// </param>
+        /// </param>
+        /// </param>
+        /// </param>
+        ///<summary> 
+        /// One time setup of the interface that starts the Heapsort.
+        ///</summary>
         void IDisplayAlgorithm.SortArray(int[] Arr, Graphics Visuals, int PanelWidth, int PanelHeight)
         {
             arr = Arr;
@@ -110,7 +147,10 @@ namespace AlgorithmVisualiser
             CheckArray();
 
         }
-        public void ReDraw()
+        ///<summary> 
+        /// Redraws the entire array in case it should dissapear.
+        ///</summary>
+        void ReDraw()
         {
             for (int i = 0; i < arr.Length; i++)
             {
@@ -129,6 +169,18 @@ namespace AlgorithmVisualiser
         }
 
         //Color methods
+
+        ///<param name="k">
+        ///<param name="v">
+        ///<param name="type">
+        ///Takes int k and v used for position and string type
+        ///</param>
+        ///</param>
+        ///</param>
+        ///<summary> 
+        /// Colors the two parts swapped green. Type is used to check if it should
+        /// color purple.
+        ///</summary>
         private void ReColor(int k, int v, string Type)
         {
             Brush Color1 = greenBrush;
@@ -144,6 +196,15 @@ namespace AlgorithmVisualiser
             visuals.FillRectangle(Color2, v * dNum, panelHeight - arr[v], dNum, panelHeight);
             System.Threading.Thread.Sleep(SleepTimer);
         }
+
+        ///<param name="k">
+        ///<param name="v">
+        ///Takes int k and v
+        ///</param>
+        ///</param>
+        ///<summary> 
+        /// Colors the two parts about to be swapped red before it happens.
+        ///</summary>
         private void SwapColor(int k, int v)
         {
             visuals.FillRectangle(blackBrush, k * dNum, 0, dNum, panelHeight);
@@ -152,6 +213,15 @@ namespace AlgorithmVisualiser
             visuals.FillRectangle(redBrush, v * dNum, panelHeight - arr[v], dNum, panelHeight);
             System.Threading.Thread.Sleep(SleepTimer);
         }
+        ///<param name="l">
+        ///<param name="n">
+        ///<param name="r">
+        ///<param name="i">
+        ///Takes int i, int n, int r, int i
+        ///</param>
+        ///<summary> 
+        /// i position of parent, r is right child l is left child n is length.
+        ///</summary>
         private void whiteRLI(int l, int n, int r, int i)
         {
             if (l < n && r < n)
@@ -183,6 +253,15 @@ namespace AlgorithmVisualiser
                 visuals.FillRectangle(whiteBrush, i * dNum, panelHeight - arr[i], dNum, panelHeight);
             }
         }
+        ///<param name="l">
+        ///<param name="n">
+        ///<param name="r">
+        ///<param name="i">
+        ///Takes int i, int n, int r, int i
+        ///</param>
+        ///<summary> 
+        /// Initial color that neeeds to be green.
+        ///</summary>
         private void InitialVisual(int i, int l, int r, int n)
         {
             visuals.FillRectangle(blackBrush, i * dNum, 0, dNum, panelHeight);
@@ -199,6 +278,10 @@ namespace AlgorithmVisualiser
             }
             System.Threading.Thread.Sleep(SleepTimer);
         }
+        ///<summary> 
+        /// CheckArray is a visual/Debug tool that goes through the array and if the sort
+        /// is done right it will color that visual bar green.
+        ///</summary>
         private void CheckArray()
         {
             for (int k = 0; k < arr.Length; k++)

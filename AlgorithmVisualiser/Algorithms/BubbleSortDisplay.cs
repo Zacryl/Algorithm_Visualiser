@@ -105,6 +105,9 @@ namespace AlgorithmVisualiser
                 }
             }
         }
+        ///<summary> 
+        /// Redraws the entire array in case it should dissapear.
+        ///</summary>
         public void ReDraw()
         {
             for (int i = 0; i < arr.Length - 1; i++)
